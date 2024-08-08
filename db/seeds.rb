@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+class AddInitialArticles < ActiveRecord::Migration[7.1]
+  def up
+    5.times do |i|
+      Article.create(title: "Title ##{i}", body: "Body.")
+    end
+  end
+
+  def down
+    Article.delete_all
+  end
+end
